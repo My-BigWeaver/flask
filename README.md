@@ -1,51 +1,60 @@
-# Flask
+# Flask Application Template
 
-Flask is a lightweight [WSGI] web application framework. It is designed
-to make getting started quick and easy, with the ability to scale up to
-complex applications. It began as a simple wrapper around [Werkzeug]
-and [Jinja], and has become one of the most popular Python web
-application frameworks.
+This is a Flask application template with a clean, maintainable structure following best practices.
 
-Flask offers suggestions, but doesn't enforce any dependencies or
-project layout. It is up to the developer to choose the tools and
-libraries they want to use. There are many extensions provided by the
-community that make adding new functionality easy.
-
-[WSGI]: https://wsgi.readthedocs.io/
-[Werkzeug]: https://werkzeug.palletsprojects.com/
-[Jinja]: https://jinja.palletsprojects.com/
-
-## A Simple Example
-
-```python
-# save this as app.py
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello, World!"
-```
+## Project Structure
 
 ```
-$ flask run
-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+.
+├── app/
+│   ├── __init__.py
+│   └── routes.py
+├── tests/
+│   ├── __init__.py
+│   └── test_app.py
+├── config.py
+├── requirements.txt
+└── run.py
 ```
 
-## Donate
+## Setup Instructions
 
-The Pallets organization develops and supports Flask and the libraries
-it uses. In order to grow the community of contributors and users, and
-allow the maintainers to devote more time to the projects, [please
-donate today].
+1. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-[please donate today]: https://palletsprojects.com/donate
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Contributing
+3. Create a .env file:
+   ```bash
+   touch .env
+   # Add environment variables like:
+   # FLASK_ENV=development
+   # SECRET_KEY=your-secret-key
+   ```
 
-See our [detailed contributing documentation][contrib] for many ways to
-contribute, including reporting issues, requesting features, asking or answering
-questions, and making PRs.
+4. Run the application:
+   ```bash
+   python run.py
+   ```
 
-[contrib]: https://palletsprojects.com/contributing/
+5. Run tests:
+   ```bash
+   pytest
+   ```
+
+## API Endpoints
+
+- `GET /`: Welcome message
+- `GET /health`: Health check endpoint
+
+## Development
+
+- The application uses a factory pattern for initialization
+- Configuration is handled through environment variables and the config.py file
+- Tests are written using pytest
